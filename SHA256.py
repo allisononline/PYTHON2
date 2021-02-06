@@ -51,10 +51,10 @@ def processing(message):
         s0 = rrotate(a[0],2) ^ rrotate(a[0],13) ^ rrotate(a[0],22)
         maj = (a[0] & a[1]) ^ (a[0] & a[2]) ^ (a[1] & a[2])
         temp2 = (s0 + maj) % (2**32)
-    for x in range(1,8):
-        h[x] = h[x-1]
-    h[0] = (temp1 + temp2) % (2**32)
-    h[4] = (h[4] + temp1) % (2**32)
+        for x in range(1,8):
+            h[x] = h[x-1]
+        h[0] = (temp1 + temp2) % (2**32)
+        h[4] = (h[4] + temp1) % (2**32)
     for x in range(8):
         h[x] += a[x]
     hash = 0
@@ -63,4 +63,4 @@ def processing(message):
         hash += h[x]
     print(hex(hash))
 
-processing("")
+processing("a")
